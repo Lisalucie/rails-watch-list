@@ -1,6 +1,8 @@
 <br>
 <%= simple_form_for(@list) do |f| %>
   <%= f.input :name %>
-  <%= f.submit "Submit", class: "btn btn-primary" %>
-  <%= link_to 'Cancel', lists_path , class: "btn btn-primary"%>
+  <%= f.input :photo, as: :file %>
+  <%= f.submit "Submit", class: "btn btn-dark" %>
+
+  <%= link_to 'Cancel', lists_path , class: "btn btn-dark"%>
 <% end %>

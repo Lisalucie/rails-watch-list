@@ -1,20 +1,29 @@
-<br>
-<h1>Show all my lists</h1>
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="1"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @lists.each do |list| %>
+<div class="list-card">
+  <table>
+    <thead>
       <tr>
-      <td><%= list.name %></td>
-      <td><%= link_to 'Show',list, class: "btn btn-primary" %></td>
+        <th>Toutes mes listes</th>
+        <th colspan="1"></th>
       </tr>
-  <% end %>
-  </tbody>
-</table>
-<%= link_to 'Add a list',new_list_path, class: "btn btn-primary" %>
+    </thead>
+  <div class="info-list-card">
+    <tbody>
+      <% @lists.each do |list| %>
+        <tr>
+          <% if list.photo.attached?  %>
+            <td><%= cl_image_tag list.photo.key, class:"list-photo" %></td>
+          <% end %>
+            <td><%= list.name %></td>
+            <td></td>
+            <td><%= link_to 'Show',list, class: "btn btn-dark" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </div>
+  </table>
+</div>
+<div class="footer">
+  <br>
+  <%= link_to 'Add a list',new_list_path, class: "btn btn-dark" %>
+</div>

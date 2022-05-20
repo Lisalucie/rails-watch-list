@@ -1,16 +1,25 @@
 <br>
-<h2>Name : </h2>
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="1"></th>
-    </tr>
-  </thead>
-   <tbody>
-    <td><%= @list.name %></td>
+<div class="movie-card">
+  <div>
+    <% if @list.photo.attached?  %>
+      <%= cl_image_tag @list.photo.key,class:"list-photo-in-show" %>
+    <% end %>
+  </div>
+  <div class="info-movie">
+    <h4>Movies </h4>
+      <%@list.movies.each do |movie| %>
+        <p><%=  movie.title %></p>
+      <% end %>
+    <h4>Bookmarks</h4>
+      <%@list.bookmarks.each do |bookmark|  %>
+        <li><%= bookmark.comment %></li>
+        <br>
+        <%= link_to "Delete Bookmark", bookmark_path(bookmark), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-dark" %>
+      <% end %>
+    </div>
+</div>
+<div class="footer">
     <br>
-    <td><%= link_to 'Back', lists_path, class: "btn btn-primary"%></td>
-    <td><%= link_to 'Bookmark', new_list_bookmark_path(@list), class: "btn btn-primary"%></td>
-  </tbody>
-</table>
+    <%= link_to 'Back', lists_path, class: "btn btn-dark"%>
+    <%= link_to 'Bookmark', new_list_bookmark_path(@list), class: "btn btn-dark"%>
+</div>
