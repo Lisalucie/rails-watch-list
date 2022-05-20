@@ -1,0 +1,16 @@
+<br>
+<h2>Name : </h2>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+   <tbody>
+    <td><%= @list.name %></td>
+    <br>
+    <td><%= link_to 'Back', lists_path, class: "btn btn-primary"%></td>
+    <td><%= link_to 'Bookmark', new_list_bookmark_path(@list), class: "btn btn-primary"%></td>
+  </tbody>
+</table>
